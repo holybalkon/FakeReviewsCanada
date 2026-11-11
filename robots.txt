@@ -1,0 +1,5 @@
+# Fake Reviews Canada
+User-agent: *
+Allow: /
+
+Sitemap: https://fakereviewscanada.ca/sitemap.xml
