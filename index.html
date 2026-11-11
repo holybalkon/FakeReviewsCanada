@@ -325,7 +325,7 @@ dl.snap dd{margin:0}
 .guide h3{font-size:1.35rem;font-weight:800;margin-bottom:1rem}
 .checks{list-style:none;display:grid;gap:1rem}
 .checks li{padding-left:1.7rem;position:relative}
-.checks li::before{content:"";position:absolute;left:0;top:.35em;width:.95rem;height:.95rem;border:2px solid var(--ink)}
+.checks li::before{content:"";position:absolute;left:0;top:.35em;width:.6rem;height:.6rem;border-radius:50%;background:var(--ink)}
 .checks strong{font-family:var(--head)}
 
 /* method */
@@ -349,6 +349,21 @@ dl.snap dd{margin:0}
 .voice .meta{display:block;font-family:var(--head);font-size:.8rem;font-weight:700;color:var(--ink-2);margin-top:.4rem}
 .voice .reply{display:block;font-size:.9rem;margin-top:.4rem;color:var(--ink-2)}
 @media (max-width:900px){.voices-grid{grid-template-columns:1fr;gap:.5rem}}
+
+/* no-response Google screenshots */
+.noresp{border-top:1px solid var(--rule);padding:1.5rem 1.6rem 1.8rem;background:var(--pane)}
+.noresp h4{font-size:1.05rem;font-weight:800;margin-bottom:.3rem}
+.noresp .note{font-size:.9rem;color:var(--ink-2);margin-bottom:1.2rem;max-width:52rem}
+.shots{display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem}
+.shot{margin:0;border:1px solid var(--rule);border-radius:10px;background:#fff;overflow:hidden}
+.shot img{display:block;width:100%;height:auto}
+.shot figcaption{font-family:var(--head);font-size:.68rem;font-weight:700;color:var(--ink-2);padding:.5rem .6rem;border-top:1px solid var(--rule);line-height:1.4}
+.shot figcaption .tag{display:inline-block;font-size:.6rem;font-weight:800;color:var(--c);text-transform:uppercase;letter-spacing:.03em}
+.shot figcaption a{color:var(--ink);text-decoration:underline}
+.shot a.shot-link{display:block}
+@media (max-width:1100px){.shots{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:700px){.shots{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:460px){.shots{grid-template-columns:1fr}}
 
 footer{border-top:1px solid var(--rule);padding:2.5rem 0 3rem;font-size:.95rem;color:var(--ink-2);background:var(--pane)}
 footer p{max-width:50rem}
@@ -385,6 +400,13 @@ td .badge{display:block;width:max-content;margin-bottom:.4rem}
 .faq h3{font-size:1.15rem;font-weight:800;margin:1.6rem 0 .5rem}
 .faq h3:first-child{margin-top:0}
 .faq-answer p{margin:0}
+.faq details{border-bottom:1px solid var(--rule);padding:1.1rem 0}
+.faq details:first-child{padding-top:0}
+.faq summary{cursor:pointer;font-size:1.15rem;font-weight:800;line-height:1.35;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";float:right;font-family:var(--head);font-weight:800;margin-left:1rem}
+.faq details[open] summary::after{content:"\2212"}
+.faq details[open] summary{margin-bottom:.6rem}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
@@ -451,37 +473,6 @@ td .badge{display:block;width:max-content;margin-bottom:.4rem}
   </div>
 </section>
 
-<section id="method" aria-labelledby="method-h">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 id="method-h">How this review watch works</h2>
-      <p>We are a window company writing about other window companies, so the rules below matter more than usual.</p>
-    </div>
-    <div class="method">
-      <div>
-        <h3>Our rules</h3>
-        <ul>
-          <li><strong>No conflicts.</strong> We do not accept payment to add, remove or alter any company’s file.</li>
-          <li><strong>Sources first.</strong> Every claim links to the original report, court decision or review page, and carries a date.</li>
-          <li><strong>Attribution.</strong> We say who made each claim. We do not state as fact anything a source only alleges.</li>
-          <li><strong>Both sides.</strong> Each case file includes the company’s response and what has not been established.</li>
-          <li><strong>Customer voices.</strong> Reviews shown on this site are summaries in our own words of posts on third-party platforms. We remove names and identifying details, show praise and criticism, and note whether the company responded.</li>
-          <li><strong>No guessing.</strong> We do not speculate about who is behind a review or why, and we do not publish personal details of reviewers.</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Limits</h3>
-        <ul>
-          <li>Review scores and counts change daily. Figures show what we saw on the date shown on each file.</li>
-          <li>Reports by researchers, customers and the press are not court or regulatory findings unless a file says so (Level A).</li>
-          <li>A company’s absence from this site means nothing. We have not reviewed the whole industry.</li>
-          <li>Some sources were not available to us in full. Where we rely on a summary, we say so.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="glance" aria-labelledby="glance-h">
   <div class="wrap">
     <div class="sec-head">
@@ -532,41 +523,6 @@ td .badge{display:block;width:max-content;margin-bottom:.4rem}
   </div>
 </section>
 
-<section id="record" aria-labelledby="record-h">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 id="record-h">Fake review reports on record in Canada</h2>
-      <p>Fake and manipulated reviews are documented by Canadian reporters and by the federal Competition Bureau. These are the reports we rely on for context.</p>
-    </div>
-    <ul class="record">
-      <li>
-        <p class="when">January 2020<span>CBC Marketplace</span></p>
-        <p>An investigation into locksmiths found more than 80 Google Maps listings in the Greater Toronto Area with false information, along with fake five-star reviews. <a href="https://amp.cbc.ca/news/canada/locksmith-google-maps-reviews-fake-marketplace-1.5417931" target="_blank" rel="noopener">Read the CBC report</a>.</p>
-      </li>
-      <li>
-        <p class="when">2021<span>CBC News investigation</span></p>
-        <p>CBC catalogued part of one fake-review network on Google: 208 fake accounts that posted 3,574 reviews for 1,279 businesses across North America. The work drew on research by Kay Dean of Fake Review Watch. <a href="https://amp.cbc.ca/news/investigates/fake-reviews-on-google-1.6033859" target="_blank" rel="noopener">Read the CBC investigation</a>.</p>
-      </li>
-      <li>
-        <p class="when">Competition Bureau<span>Penalty on FlightHub</span></p>
-        <p>The Bureau fined the online travel agency FlightHub $5 million, and two of its directors $400,000, after the company published fake positive customer reviews. <a href="https://www.cjad800.com/news/fake-online-reviews-competition-bureau-issues-warning-1.21371609.html" target="_blank" rel="noopener">Read the news report</a>.</p>
-      </li>
-      <li>
-        <p class="when">December 2024<span>AP / The Transparency Company</span></p>
-        <p>A review-analysis company examined 73 million reviews in home, legal and medical services and judged nearly 14% likely to be fake. It said it was highly confident that about 2.3 million were partly or entirely written with AI tools. The report also notes that a review written with AI is not necessarily fake. <a href="https://www.fastcompany.com/91252048/fake-ai-generated-reviews-internet-research" target="_blank" rel="noopener">Read the report coverage</a>.</p>
-      </li>
-      <li>
-        <p class="when">July 2026<span>CTV News Toronto</span></p>
-        <p>CTV reported on Google reviews for a Toronto window business that appeared under the names of famous actors who do not live in Canada. CTV did not name the business. Google said it removed the reviews and suspended reviews on the profiles involved. <a href="https://www.cp24.com/local/toronto/2026/07/16/did-these-high-profile-hollywood-celebrities-really-provide-online-reviews-for-a-toronto-window-company/" target="_blank" rel="noopener">Read the CTV report</a>.</p>
-      </li>
-      <li>
-        <p class="when">October 2026<span>Toronto Star</span></p>
-        <p>The Star’s guide to spotting fake reviews cites a projection that fake reviews will cost online consumers US$1.07 trillion by 2030, and features a Vaughan window company that Fake Review Watch has linked to fake Google reviews. <a href="https://www.thestar.com/business/personal-finance/fake-online-reviews-cheated-consumers-out-of-770-billion-last-year-here-s-how-to-spot-one-before-it-fools-you/article_92388817-73d1-4c31-82bc-ed7462db611f.html" target="_blank" rel="noopener">Read the Star article</a>.</p>
-      </li>
-    </ul>
-  </div>
-</section>
-
 <section id="cases" aria-labelledby="cases-h">
   <div class="wrap">
     <div class="sec-head">
@@ -592,19 +548,19 @@ td .badge{display:block;width:max-content;margin-bottom:.4rem}
         <div class="col">
           <h4>What has been reported</h4>
           <ul>
-            <li>BBB complaint pages for branches in Ottawa, Calgary, Halifax, Edmonton and Winnipeg describe installation quality, measurement errors and disagreements over contract terms.</li>
-            <li>On TrustedPros, a Vancouver-area customer says a project coordinator offered a $50 gift card in connection with a negative review. This is one customer’s claim.</li>
-            <li>A 2022 Reddit thread, started by a customer looking for others with unresolved problems, says some customers were offered money to take reviews down and that a lawyer’s letter tied warranty coverage to removing reviews. The posts are anonymous and we have not seen documents.</li>
-            <li>Several commenters in that thread say the company wanted full payment before installation, and some Calgary customers say the warranty they were sold differs from the terms they later received.</li>
+            <li><a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444/complaints" target="_blank" rel="noopener"></a>BBB complaint pages</a> for branches in <a href="https://www.bbb.org/ca/on/nepean/profile/windows/ecoline-windows-ottawa-0117-71548/complaints" target="_blank" rel="noopener">Ottawa</a>, <a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444/complaints" target="_blank" rel="noopener">Calgary</a>, <a href="https://www.bbb.org/ca/ns/dartmouth/profile/window-installation/ecoline-windows-and-doors-halifax-0087-90573/complaints" target="_blank" rel="noopener">Halifax</a>, <a href="https://www.bbb.org/ca/ab/edmonton/profile/replacement-windows/ecoline-windows-edmonton-0017-153825/complaints" target="_blank" rel="noopener">Edmonton</a> and <a href="https://www.bbb.org/ca/mb/winnipeg/profile/window-door-installation/ecoline-windows-0057-31034/complaints" target="_blank" rel="noopener">Winnipeg</a> describe installation quality, measurement errors and disagreements over contract terms.</li>
+            <li>On <a href="https://trustedpros.ca/company/ecoline-windows-vancouver" target="_blank" rel="noopener">TrustedPros</a>, a Vancouver-area customer says a project coordinator offered a $50 gift card in connection with a negative review. This is one customer’s claim.</li>
+            <li>A <a href="https://www.reddit.com/r/BuyCanadian/comments/wbeux7/wanted_ecoline_customers_with_unresolved_issues/" target="_blank" rel="noopener">2022 Reddit thread</a>, started by a customer looking for others with unresolved problems, says some customers were offered money to take reviews down and that a lawyer’s letter tied warranty coverage to removing reviews. The posts are anonymous and we have not seen documents.</li>
+            <li>Several commenters in <a href="https://www.reddit.com/r/BuyCanadian/comments/wbeux7/wanted_ecoline_customers_with_unresolved_issues/" target="_blank" rel="noopener">that thread</a> say the company wanted full payment before installation, and some Calgary customers say the warranty they were sold differs from the terms they later received.</li>
           </ul>
         </div>
         <div class="col">
           <h4>What the company says</h4>
           <ul>
-            <li>Its website describes a 25-year warranty on windows and installation, and explains that Stage Windows is its manufacturing arm. <span class="stated-tag">company-stated</span></li>
-            <li>In its replies on BBB, it generally says it delivered the work the contract covered. <span class="stated-tag">company-stated</span></li>
-            <li>A page on its own site argues that some negative reviews come from competitors and gives tips for telling real from fake. <span class="stated-tag">company-stated</span></li>
-            <li>It cites BBB accreditation and large review counts, for example a 4.8 Google rating from 1,396 reviews in Winnipeg (company-published figures). <span class="stated-tag">company-stated</span></li>
+            <li>Its website describes a <a href="https://www.ecolinewindows.ca/warranty" target="_blank" rel="noopener">25-year warranty</a> on windows and installation, and <a href="https://www.ecolinewindows.ca/ecoline-stage-windows-together-under-one-roof/" target="_blank" rel="noopener">explains that Stage Windows is its manufacturing arm</a>. <span class="stated-tag">company-stated</span></li>
+            <li>In its replies on <a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444/complaints" target="_blank" rel="noopener">BBB</a>, it generally says it delivered the work the contract covered. <span class="stated-tag">company-stated</span></li>
+            <li><a href="https://www.ecolinewindows.ca/dont-use-ecoline-windows/" target="_blank" rel="noopener">A page on its own site</a> argues that some negative reviews come from competitors and gives tips for telling real from fake. <span class="stated-tag">company-stated</span></li>
+            <li>It cites <a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444" target="_blank" rel="noopener">BBB accreditation</a> and large review counts, for example a 4.8 Google rating from 1,396 reviews in <a href="https://www.ecolinewindows.ca/winnipeg-reviews/" target="_blank" rel="noopener">Winnipeg</a> (company-published figures). <span class="stated-tag">company-stated</span></li>
           </ul>
         </div>
         <div class="col">
@@ -612,8 +568,8 @@ td .badge{display:block;width:max-content;margin-bottom:.4rem}
           <ul>
             <li>We found no evidence that Ecoline posts or buys fake reviews.</li>
             <li>Claims of payments or pressure to remove reviews come from individuals and are unconfirmed.</li>
-            <li>Different pages on Ecoline’s site give different founding years and installation totals. This may simply be outdated pages and is not evidence of wrongdoing.</li>
-            <li>Ratings differ widely between platforms and branches, so a single score says little.</li>
+            <li>Different pages on Ecoline’s site give different <a href="https://www.ecolinewindows.ca/facts/" target="_blank" rel="noopener">founding years and installation totals</a>. This may simply be outdated pages and is not evidence of wrongdoing.</li>
+            <li>Ratings differ widely between <a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444/customer-reviews" target="_blank" rel="noopener">platforms and branches</a>, so a single score says little.</li>
           </ul>
         </div>
       </div>
@@ -625,19 +581,73 @@ td .badge{display:block;width:max-content;margin-bottom:.4rem}
         <div class="voices-grid">
           <div>
             <h5>Customer reviews</h5>
-            <div class="voice pos"><p>Windows replaced. The project manager explained the options clearly and followed up after the job. The installers kept the house clean and finished ahead of schedule.</p><p class="meta">BBB review, Calgary, March 2026, 5 of 5. Ecoline replied with thanks.</p></div>
-            <div class="voice pos"><p>The customer spent more than a year deciding, and chose Ecoline partly because they did not feel pressured. Seven windows and a large patio door were done in one day, and the customer says the house is warmer so far. The price was a little below competitors, and the glass-breakage warranty was a deciding factor.</p><p class="meta">BBB review, Calgary, March 2026, 5 of 5. Ecoline replied with thanks.</p></div>
-            <div class="voice pos"><p>After a break-in, the company measured and quoted a replacement door the next day. The door was made on time and installed as promised.</p><p class="meta">BBB review, Calgary, March 2026, 5 of 5. Ecoline replied with thanks.</p></div>
-            <div class="voice pos"><p>A new front door was installed in one visit and the customer calls the work well done.</p><p class="meta">BBB review, Calgary, June 2026, 5 of 5.</p></div>
+            <div class="voice pos"><p>Windows replaced. The project manager explained the options clearly and followed up after the job. The installers kept the house clean and finished ahead of schedule.</p><p class="meta">BBB review, Calgary, March 2026, 5 of 5. Ecoline replied with thanks. <a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444/customer-reviews" target="_blank" rel="nofollow noopener">Source: BBB Calgary reviews</a>.</p></div>
+            <div class="voice pos"><p>The customer spent more than a year deciding, and chose Ecoline partly because they did not feel pressured. Seven windows and a large patio door were done in one day, and the customer says the house is warmer so far. The price was a little below competitors, and the glass-breakage warranty was a deciding factor.</p><p class="meta">BBB review, Calgary, March 2026, 5 of 5. Ecoline replied with thanks. <a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444/customer-reviews" target="_blank" rel="nofollow noopener">Source: BBB Calgary reviews</a>.</p></div>
+            <div class="voice pos"><p>After a break-in, the company measured and quoted a replacement door the next day. The door was made on time and installed as promised.</p><p class="meta">BBB review, Calgary, March 2026, 5 of 5. Ecoline replied with thanks. <a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444/customer-reviews" target="_blank" rel="nofollow noopener">Source: BBB Calgary reviews</a>.</p></div>
+            <div class="voice pos"><p>A new front door was installed in one visit and the customer calls the work well done.</p><p class="meta">BBB review, Calgary, June 2026, 5 of 5. <a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444/customer-reviews" target="_blank" rel="nofollow noopener">Source: BBB Calgary reviews</a>.</p></div>
           </div>
           <div>
             <h5>Complaints, with Ecoline’s response</h5>
-            <div class="voice neg"><p>A customer says new custom exterior doors have several defects, including gaps, missing screws, trim separating and a sill coming loose, and that existing alarm wiring was covered over during installation. Ecoline and a retail partner offered a refund if the customer kept the door and signed a release. The customer says the release had confidentiality terms and declined.</p><p class="reply">Ecoline says the offer was more than fair and is final.</p><p class="meta">BBB complaint, Calgary, September 2026, status: answered.</p></div>
-            <div class="voice neg"><p>Three windows were made too short more than once, and a scheduled installation fell through, so the project took about four months.</p><p class="reply">Ecoline apologized and completed the installation. The customer then confirmed the response was satisfactory.</p><p class="meta">BBB complaint, Calgary, September 2026, status: resolved.</p></div>
-            <div class="voice neg"><p>Water came through a window several years after installation. The customer says independent companies told them the siding should have been peeled back so the window could be flashed properly.</p><p class="reply">Ecoline says the contract specified a brick-mould installation, its inspection found the seal intact, and the warranty does not cover siding or roof problems. The two sides disagree about whether the building code applies.</p><p class="meta">BBB complaint, Calgary, September 2026, status: answered.</p></div>
-            <div class="voice neg"><p>After installation, a customer reported air coming in through the window drain holes, along with several finishing problems.</p><p class="reply">Ecoline agreed to replace one window as a test case. The customer says the wider issue is not yet resolved.</p><p class="meta">BBB complaint, Calgary, May to June 2026, status: answered.</p></div>
-            <div class="voice neg"><p>A customer says the replacement patio door opens narrower than they believe local code allows.</p><p class="reply">Ecoline says the door matched the signed contract, and that custom products are non-refundable.</p><p class="meta">BBB complaint, Calgary, February 2025, status: answered.</p></div>
+            <div class="voice neg"><p>A customer says new custom exterior doors have several defects, including gaps, missing screws, trim separating and a sill coming loose, and that existing alarm wiring was covered over during installation. Ecoline and a retail partner offered a refund if the customer kept the door and signed a release. The customer says the release had confidentiality terms and declined.</p><p class="reply">Ecoline says the offer was more than fair and is final.</p><p class="meta">BBB complaint, Calgary, September 2026, status: answered. <a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444/complaints" target="_blank" rel="nofollow noopener">Source: BBB Calgary complaints</a>.</p></div>
+            <div class="voice neg"><p>Three windows were made too short more than once, and a scheduled installation fell through, so the project took about four months.</p><p class="reply">Ecoline apologized and completed the installation. The customer then confirmed the response was satisfactory.</p><p class="meta">BBB complaint, Calgary, September 2026, status: resolved. <a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444/complaints" target="_blank" rel="nofollow noopener">Source: BBB Calgary complaints</a>.</p></div>
+            <div class="voice neg"><p>Water came through a window several years after installation. The customer says independent companies told them the siding should have been peeled back so the window could be flashed properly.</p><p class="reply">Ecoline says the contract specified a brick-mould installation, its inspection found the seal intact, and the warranty does not cover siding or roof problems. The two sides disagree about whether the building code applies.</p><p class="meta">BBB complaint, Calgary, September 2026, status: answered. <a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444/complaints" target="_blank" rel="nofollow noopener">Source: BBB Calgary complaints</a>.</p></div>
+            <div class="voice neg"><p>After installation, a customer reported air coming in through the window drain holes, along with several finishing problems.</p><p class="reply">Ecoline agreed to replace one window as a test case. The customer says the wider issue is not yet resolved.</p><p class="meta">BBB complaint, Calgary, May to June 2026, status: answered. <a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444/complaints" target="_blank" rel="nofollow noopener">Source: BBB Calgary complaints</a>.</p></div>
+            <div class="voice neg"><p>A customer says the replacement patio door opens narrower than they believe local code allows.</p><p class="reply">Ecoline says the door matched the signed contract, and that custom products are non-refundable.</p><p class="meta">BBB complaint, Calgary, February 2025, status: answered. <a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444/complaints" target="_blank" rel="nofollow noopener">Source: BBB Calgary complaints</a>.</p></div>
           </div>
+        </div>
+      </div>
+      <div class="noresp">
+        <h4>On Google, the company does not respond to negative experiences from its clients</h4>
+        <p class="note">Critical Google reviews of Ecoline shown below. On each one, the company left no public reply, unlike the praise it responds to with thanks. Summaries are the reviewers’ own public posts; screenshots were captured from Google.</p>
+        <div class="shots">
+          <figure class="shot">
+            <a class="shot-link" href="https://maps.app.goo.gl/ikfYpRGZffCcKsS16" target="_blank" rel="nofollow noopener"><img src="ecoline-google-noresponse-1.png" alt="Google review by Sofi Katzenelson, 1 star: remote-control blinds broke within a year under warranty and Ecoline refused to replace them. No company response." loading="lazy" width="624" height="442"></a>
+            <figcaption><span class="tag">No company response</span><br>1★ — blinds failed under warranty, replacement refused. Reviewer: Local Guide, 59 reviews. <a href="https://maps.app.goo.gl/ikfYpRGZffCcKsS16" target="_blank" rel="nofollow noopener">View on Google Maps</a>.</figcaption>
+          </figure>
+          <figure class="shot">
+            <a class="shot-link" href="https://maps.app.goo.gl/Ecw1NWHeRitswTsk7" target="_blank" rel="nofollow noopener"><img src="ecoline-google-noresponse-2.png" alt="Google review by Lisa Rouleau, 1 star: says her quote was edited to remove her concerns and she would not use the company. No company response." loading="lazy" width="607" height="384"></a>
+            <figcaption><span class="tag">No company response</span><br>1★ — reviewer says her quote was edited to remove her concerns. Reviewer: 9 reviews. <a href="https://maps.app.goo.gl/Ecw1NWHeRitswTsk7" target="_blank" rel="nofollow noopener">View on Google Maps</a>.</figcaption>
+          </figure>
+          <figure class="shot">
+            <a class="shot-link" href="https://maps.app.goo.gl/PJcVZzkXCPH9B3PV9" target="_blank" rel="nofollow noopener"><img src="ecoline-google-noresponse-4.png" alt="Google review by Mike Stickland, 1 star: damage to entry paneling was not disclosed until after signing off on the work. No company response." loading="lazy" width="600" height="423"></a>
+            <figcaption><span class="tag">No company response</span><br>1★ — damage to entry paneling not disclosed until after the review was signed. Reviewer: 10 reviews. <a href="https://maps.app.goo.gl/PJcVZzkXCPH9B3PV9" target="_blank" rel="nofollow noopener">View on Google Maps</a>.</figcaption>
+          </figure>
+          <figure class="shot">
+            <a class="shot-link" href="https://maps.app.goo.gl/qU2cUxVecQmMha6F6" target="_blank" rel="nofollow noopener"><img src="ecoline-google-noresponse-5.png" alt="Google review by Janice Wu, 1 star: replacement bathroom window sill is bowed with a gap in the corner, suggesting the window was forced into an improperly prepared opening. No company response." loading="lazy" width="607" height="894"></a>
+            <figcaption><span class="tag">No company response</span><br>1★ — replacement window sill bowed, gap in the corner; reviewer says the window was forced into a poorly prepared opening. Reviewer: 6 reviews, 12 photos. <a href="https://maps.app.goo.gl/qU2cUxVecQmMha6F6" target="_blank" rel="nofollow noopener">View on Google Maps</a>.</figcaption>
+          </figure>
+          <figure class="shot">
+            <a class="shot-link" href="https://maps.app.goo.gl/wEABcJR86CEUMP457" target="_blank" rel="nofollow noopener"><img src="ecoline-google-noresponse-6.png" alt="Google review by Roy Vogelsang, 1 star: windows and doors installed by Eco-line in May and June 2023; says the window installation went well but the door work had problems, with photos of cracked and separating trim. No company response." loading="lazy" width="607" height="895"></a>
+            <figcaption><span class="tag">No company response</span><br>1★ — windows installed well but the door work is faulty; photos show cracked and separating trim. Reviewer: Local Guide, 10 reviews, 30 photos. <a href="https://maps.app.goo.gl/wEABcJR86CEUMP457" target="_blank" rel="nofollow noopener">View on Google Maps</a>.</figcaption>
+          </figure>
+          <figure class="shot">
+            <a class="shot-link" href="https://maps.app.goo.gl/Nvyp1J8qAWj9PjDd7" target="_blank" rel="nofollow noopener"><img src="ecoline-google-noresponse-7.png" alt="Google review by Ocko Ocko, 1 star: after more than 11 months to get a door, says Ecoline made an unsolicited offer to remove the review in exchange for refunding an accounting error of about 227 dollars, roughly 10 percent of the bill. Photos show a damaged door latch plate. No company response." loading="lazy" width="600" height="892"></a>
+            <figcaption><span class="tag">No company response</span><br>1★ — reviewer says that after an 11-month ordeal, the company offered to refund a billing error (about $227, ~10% of the bill) in exchange for removing the review. Reviewer: 6 reviews, 8 photos. <a href="https://maps.app.goo.gl/Nvyp1J8qAWj9PjDd7" target="_blank" rel="nofollow noopener">View on Google Maps</a>.</figcaption>
+          </figure>
+          <figure class="shot">
+            <a class="shot-link" href="https://maps.app.goo.gl/VenwU81VmDfeLZGc6" target="_blank" rel="nofollow noopener">
+              <img src="ecoline-google-noresponse-8.png" alt="Google review by Jakub Drag, 1 star: spent over 30,000 dollars about 2.5 years ago to replace all windows and doors; says the vertical-slider windows are warped, will not lock and are bowing. Photos show a bowed window and a lock that will not align. No company response." loading="lazy" width="603" height="889">
+            </a>
+            <figcaption><span class="tag">No company response</span><br>1★ — says $30k+ of replacement windows are warped, won't lock and are bowing about 2.5 years after installation. Reviewer: Local Guide, 15 reviews, 3 photos. <a href="https://maps.app.goo.gl/VenwU81VmDfeLZGc6" target="_blank" rel="nofollow noopener">View on Google Maps</a></figcaption>
+          </figure>
+          <figure class="shot">
+            <a class="shot-link" href="https://maps.app.goo.gl/ZSbTbcxEQU7FmYHv7" target="_blank" rel="nofollow noopener">
+              <img src="ecoline-google-noresponse-9.png" alt="Google review by Mark Imach, 1 star: used Ecoline Windows to replace a front door and several additional windows; calls it the worst experience he has ever had with a company on any contract work. No company response." loading="lazy" width="603" height="931">
+            </a>
+            <figcaption><span class="tag">No company response</span><br>1★ — calls replacing a front door and several windows "the absolute worst experience" he has had with any contractor. Reviewer: 4 reviews, 7 photos. <a href="https://maps.app.goo.gl/ZSbTbcxEQU7FmYHv7" target="_blank" rel="nofollow noopener">View on Google Maps</a></figcaption>
+          </figure>
+          <figure class="shot">
+            <a class="shot-link" href="https://maps.app.goo.gl/uYxMTvpa1Z3SmSdc6" target="_blank" rel="nofollow noopener">
+              <img src="ecoline-google-noresponse-10.png" alt="Google review by Claudia X, 1 star, edited 2 years ago: an update to an earlier post about her Ecoline experience; says windows were installed in June 2023, one window piece bent and separated from the glass, and that west-facing windows smell of burnt plastic in the sun. She also describes a man who came to her door claiming she was about to sign a deal with Ecoline. No company response." loading="lazy" width="601" height="862">
+            </a>
+            <figcaption><span class="tag">No company response</span><br>1★ — an updated post about windows installed in June 2023; describes a window piece that bent and separated from the glass, and west-facing windows that smell of burnt plastic in the sun. Reviewer: Local Guide, 12 reviews, 8 photos. <a href="https://maps.app.goo.gl/uYxMTvpa1Z3SmSdc6" target="_blank" rel="nofollow noopener">View on Google Maps</a></figcaption>
+          </figure>
+          <figure class="shot">
+            <a class="shot-link" href="#" target="_blank" rel="nofollow noopener">
+              <img src="ecoline-google-noresponse-11.png" alt="Google review by Linda McNaull, 1 star, a year ago: had 4 bedroom windows and 1 patio door completed by Ecoline after being told there was no glass issue. Photos show gaps and cracked sealant around window and door frames. No company response." loading="lazy" width="601" height="868">
+            </a>
+            <figcaption><span class="tag">No company response</span><br>1★ — 4 bedroom windows and a patio door installed by Ecoline; photos show gaps and cracked sealant at the frames. Reviewer: Local Guide, 15 reviews, 12 photos. <a href="#" target="_blank" rel="nofollow noopener">View on Google Maps</a></figcaption>
+          </figure>
         </div>
       </div>
       <div class="case-foot">
@@ -711,11 +721,11 @@ td .badge{display:block;width:max-content;margin-bottom:.4rem}
         <div class="voices-grid">
           <div>
             <h5>Customer reviews</h5>
-            <div class="voice pos"><p>A bay window and a slider were installed in a living room renovation. The customer praises the service and says the quote was lower than other companies.</p><p class="meta">n49 review, July 2016.</p></div>
-            <div class="voice pos"><p>The customer bought everything and used the company’s installers, describing the installers as thorough and professional.</p><p class="meta">n49 review, June 2016.</p></div>
-            <div class="voice pos"><p>All windows and a patio door were replaced. The sales rep was knowledgeable and did not pressure the customer, and the installers were efficient and left the house tidy.</p><p class="meta">n49 review, December 2013.</p></div>
-            <div class="voice mix"><p>A customer says a front door installed earlier was faulty and took years to be replaced, and that the crew who finally replaced it were professional and tidy. They would recommend the company only with that crew.</p><p class="meta">n49 review, September 2015.</p></div>
-            <div class="voice pos"><p>The customer had doubts after the job was done. A window with a defect in the glass was replaced without argument, which the customer found unusual.</p><p class="meta">n49 review, March 2011.</p></div>
+            <div class="voice pos"><p>A bay window and a slider were installed in a living room renovation. The customer praises the service and says the quote was lower than other companies.</p><p class="meta">n49 review, July 2016. <a href="https://www.n49.com/biz/913984/total-home-windows-and-doors-on-vaughan-7250-keele-street/" target="_blank" rel="nofollow noopener">Source: n49 listing</a>.</p></div>
+            <div class="voice pos"><p>The customer bought everything and used the company’s installers, describing the installers as thorough and professional.</p><p class="meta">n49 review, June 2016. <a href="https://www.n49.com/biz/913984/total-home-windows-and-doors-on-vaughan-7250-keele-street/" target="_blank" rel="nofollow noopener">Source: n49 listing</a>.</p></div>
+            <div class="voice pos"><p>All windows and a patio door were replaced. The sales rep was knowledgeable and did not pressure the customer, and the installers were efficient and left the house tidy.</p><p class="meta">n49 review, December 2013. <a href="https://www.n49.com/biz/913984/total-home-windows-and-doors-on-vaughan-7250-keele-street/" target="_blank" rel="nofollow noopener">Source: n49 listing</a>.</p></div>
+            <div class="voice mix"><p>A customer says a front door installed earlier was faulty and took years to be replaced, and that the crew who finally replaced it were professional and tidy. They would recommend the company only with that crew.</p><p class="meta">n49 review, September 2015. <a href="https://www.n49.com/biz/913984/total-home-windows-and-doors-on-vaughan-7250-keele-street/" target="_blank" rel="nofollow noopener">Source: n49 listing</a>.</p></div>
+            <div class="voice pos"><p>The customer had doubts after the job was done. A window with a defect in the glass was replaced without argument, which the customer found unusual.</p><p class="meta">n49 review, March 2011. <a href="https://www.n49.com/biz/913984/total-home-windows-and-doors-on-vaughan-7250-keele-street/" target="_blank" rel="nofollow noopener">Source: n49 listing</a>.</p></div>
           </div>
           <div>
             <h5>Critical reviews</h5>
@@ -793,14 +803,14 @@ td .badge{display:block;width:max-content;margin-bottom:.4rem}
         <div class="voices-grid">
           <div>
             <h5>Customer reviews</h5>
-            <div class="voice pos"><p>All windows in the home were replaced. The customer is happy with the product and workmanship, and the installers worked on a Saturday to finish in time. A service visit the following week adjusted the blinds.</p><p class="meta">HomeStars review, August 2022, 5 of 5.</p></div>
-            <div class="voice pos"><p>The customer chose a window wall partly because the company is Canadian and offers a 40-year warranty. They report good service since the 2019 installation.</p><p class="meta">HomeStars review, July 2022, 5 of 5.</p></div>
-            <div class="voice pos"><p>A problem with a custom patio door was fixed at no charge after customer service responded promptly.</p><p class="meta">HomeStars review, July 2022, 5 of 5.</p></div>
-            <div class="voice mix"><p>The customer is happy with the windows but says after-sales service was lacking: they waited more than a month to have a screen fixed, and an appointment was missed.</p><p class="meta">HomeStars review, August 2015, 5 of 5.</p></div>
+            <div class="voice pos"><p>All windows in the home were replaced. The customer is happy with the product and workmanship, and the installers worked on a Saturday to finish in time. A service visit the following week adjusted the blinds.</p><p class="meta">HomeStars review, August 2022, 5 of 5. <a href="https://www.homestars.com/profile/2777585-magic/reviews" target="_blank" rel="nofollow noopener">Source: HomeStars, Magic profile</a>.</p></div>
+            <div class="voice pos"><p>The customer chose a window wall partly because the company is Canadian and offers a 40-year warranty. They report good service since the 2019 installation.</p><p class="meta">HomeStars review, July 2022, 5 of 5. <a href="https://www.homestars.com/profile/2777585-magic/reviews" target="_blank" rel="nofollow noopener">Source: HomeStars, Magic profile</a>.</p></div>
+            <div class="voice pos"><p>A problem with a custom patio door was fixed at no charge after customer service responded promptly.</p><p class="meta">HomeStars review, July 2022, 5 of 5. <a href="https://www.homestars.com/profile/2777585-magic/reviews" target="_blank" rel="nofollow noopener">Source: HomeStars, Magic profile</a>.</p></div>
+            <div class="voice mix"><p>The customer is happy with the windows but says after-sales service was lacking: they waited more than a month to have a screen fixed, and an appointment was missed.</p><p class="meta">HomeStars review, August 2015, 5 of 5. <a href="https://www.homestars.com/profile/2777585-magic/reviews" target="_blank" rel="nofollow noopener">Source: HomeStars, Magic profile</a>.</p></div>
           </div>
           <div>
             <h5>Critical reviews</h5>
-            <div class="voice neg"><p>A couple who bought 14 windows and a sliding door reported leaking after installation and wrote three negative reviews. When they refused to delete them, the company sued them. The court dismissed the lawsuit. We were not able to retrieve the text of their reviews.</p><p class="reply">The company’s lawyers say the statements about the company were untrue.</p><p class="meta">Reported by CTV News Toronto, October 2021.</p></div>
+            <div class="voice neg"><p>A couple who bought 14 windows and a sliding door reported leaking after installation and wrote three negative reviews. When they refused to delete them, the company sued them. The court dismissed the lawsuit. We were not able to retrieve the text of their reviews.</p><p class="reply">The company’s lawyers say the statements about the company were untrue.</p><p class="meta">Reported by CTV News Toronto, October 2021. <a href="https://toronto.ctvnews.ca/ontario-couple-bullied-by-window-company-over-bad-reviews-awarded-166-000-1.5625089" target="_blank" rel="nofollow noopener">Source: CTV News Toronto</a>.</p></div>
           </div>
         </div>
       </div>
@@ -829,6 +839,41 @@ td .badge{display:block;width:max-content;margin-bottom:.4rem}
         </div>
       </div>
     </article>
+  </div>
+</section>
+
+<section id="record" aria-labelledby="record-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="record-h">Fake review reports on record in Canada</h2>
+      <p>Fake and manipulated reviews are documented by Canadian reporters and by the federal Competition Bureau. These are the reports we rely on for context.</p>
+    </div>
+    <ul class="record">
+      <li>
+        <p class="when">January 2020<span>CBC Marketplace</span></p>
+        <p>An investigation into locksmiths found more than 80 Google Maps listings in the Greater Toronto Area with false information, along with fake five-star reviews. <a href="https://amp.cbc.ca/news/canada/locksmith-google-maps-reviews-fake-marketplace-1.5417931" target="_blank" rel="noopener">Read the CBC report</a>.</p>
+      </li>
+      <li>
+        <p class="when">2021<span>CBC News investigation</span></p>
+        <p>CBC catalogued part of one fake-review network on Google: 208 fake accounts that posted 3,574 reviews for 1,279 businesses across North America. The work drew on research by Kay Dean of Fake Review Watch. <a href="https://amp.cbc.ca/news/investigates/fake-reviews-on-google-1.6033859" target="_blank" rel="noopener">Read the CBC investigation</a>.</p>
+      </li>
+      <li>
+        <p class="when">Competition Bureau<span>Penalty on FlightHub</span></p>
+        <p>The Bureau fined the online travel agency FlightHub $5 million, and two of its directors $400,000, after the company published fake positive customer reviews. <a href="https://www.cjad800.com/news/fake-online-reviews-competition-bureau-issues-warning-1.21371609.html" target="_blank" rel="noopener">Read the news report</a>.</p>
+      </li>
+      <li>
+        <p class="when">December 2024<span>AP / The Transparency Company</span></p>
+        <p>A review-analysis company examined 73 million reviews in home, legal and medical services and judged nearly 14% likely to be fake. It said it was highly confident that about 2.3 million were partly or entirely written with AI tools. The report also notes that a review written with AI is not necessarily fake. <a href="https://www.fastcompany.com/91252048/fake-ai-generated-reviews-internet-research" target="_blank" rel="noopener">Read the report coverage</a>.</p>
+      </li>
+      <li>
+        <p class="when">July 2026<span>CTV News Toronto</span></p>
+        <p>CTV reported on Google reviews for a Toronto window business that appeared under the names of famous actors who do not live in Canada. CTV did not name the business. Google said it removed the reviews and suspended reviews on the profiles involved. <a href="https://www.cp24.com/local/toronto/2026/07/16/did-these-high-profile-hollywood-celebrities-really-provide-online-reviews-for-a-toronto-window-company/" target="_blank" rel="noopener">Read the CTV report</a>.</p>
+      </li>
+      <li>
+        <p class="when">October 2026<span>Toronto Star</span></p>
+        <p>The Star’s guide to spotting fake reviews cites a projection that fake reviews will cost online consumers US$1.07 trillion by 2030, and features a Vaughan window company that Fake Review Watch has linked to fake Google reviews. <a href="https://www.thestar.com/business/personal-finance/fake-online-reviews-cheated-consumers-out-of-770-billion-last-year-here-s-how-to-spot-one-before-it-fools-you/article_92388817-73d1-4c31-82bc-ed7462db611f.html" target="_blank" rel="noopener">Read the Star article</a>.</p>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -874,18 +919,65 @@ td .badge{display:block;width:max-content;margin-bottom:.4rem}
       <h2 id="faq-h">Frequently asked questions about fake window and door reviews</h2>
     </div>
     <div class="faq">
-      <h3>How can I tell if a review of a window company is fake?</h3>
-      <div class="faq-answer"><p>No single sign proves it. Look for locked or empty reviewer profiles, many five-star reviews in a few days, generic praise that never mentions measuring or installation, repeated phrasing across profiles, and the same names reviewing unrelated businesses in other cities or countries. Compare Google with HomeStars, BBB and Trustpilot, and read the one-star reviews and the company’s replies.</p></div>
-      <h3>Does a company with suspicious reviews sell bad windows?</h3>
-      <div class="faq-answer"><p>Not necessarily. Suspicious reviews say something about how a company is presented online, not about its product. A customer quoted by the Toronto Star said she was pleased with her windows even after learning the company had been linked to fake Google reviews. Check contracts, warranties and installation details separately.</p></div>
-      <h3>Are fake reviews illegal in Canada?</h3>
-      <div class="faq-answer"><p>The Competition Bureau has warned that fake reviews, including undisclosed reviews written by employees, can lead to penalties under the Competition Act. It fined the online travel agency FlightHub $5 million, and two of its directors $400,000, after the company published fake positive customer reviews.</p></div>
-      <h3>What do evidence levels A, B and C mean?</h3>
-      <div class="faq-answer"><p>Level A is a court decision or a regulator’s finding. Level B is a claim by an independent researcher that news media have reported, which the company disputes and no court or regulator has ruled on. Level C is a claim made by customers on review sites or forums that nobody independent has confirmed.</p></div>
-      <h3>What can I do if I am named here and disagree?</h3>
-      <div class="faq-answer"><p>Tell us. We will check the statement, correct errors promptly, and publish your response alongside your company’s file. Please include the page, the statement in question, and any documents that support your correction.</p></div>
-      <h3>Where can I report a suspected fake review?</h3>
-      <div class="faq-answer"><p>Report it to the platform that hosts it, such as Google, HomeStars, BBB or Trustpilot, using the report option next to the review. Keep screenshots and the date you saw it.</p></div>
+      <details>
+        <summary>Which window and door companies should I be careful with?</summary>
+        <div class="faq-answer"><p>We can’t tell you which company to avoid, and nobody can judge a company from the outside. What we can do is show what has been reported, by whom, and how strong the evidence is. Our <a href="#cases">case files</a> cover three companies, and each is graded Level A, B or C.</p><p>If you are considering Ecoline Windows and Doors, read the record before you sign. The <a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444/complaints" target="_blank" rel="noopener">BBB profile for its Calgary branch</a> lists 29 complaints in the last three years, 4 of them in the last 12 months. They concern service and repair problems, customer service and order issues, including disagreements over contract terms. Ecoline replied to the complaints we read, generally saying it delivered what the contract covered. The same BBB profile shows an A+ rating and an average of <a href="https://www.bbb.org/ca/ab/calgary/profile/windows/ecoline-windows-calgary-0017-61444/customer-reviews" target="_blank" rel="noopener">4.72 out of 5 from 118 customer reviews</a>.</p><p>Separately, a few customers have said on <a href="https://trustedpros.ca/company/ecoline-windows-vancouver" target="_blank" rel="noopener">TrustedPros</a> and <a href="https://www.reddit.com/r/BuyCanadian/comments/wbeux7/wanted_ecoline_customers_with_unresolved_issues/" target="_blank" rel="noopener">Reddit</a> that they were offered money or pressured over negative reviews. Those claims are unconfirmed, and we found no evidence that Ecoline posts or buys fake reviews.</p><p>Our advice is the same for any company, Ecoline included. Read the contract (scope, warranty, payment schedule), check recent complaints and how the company replied, compare several platforms instead of trusting a star average, and use our <a href="#check">checklist</a>.</p></div>
+      </details>
+      <details>
+        <summary>How can I tell if a review of a window company is fake?</summary>
+        <div class="faq-answer"><p>No single sign proves it. Look for locked or empty reviewer profiles, many five-star reviews in a few days, generic praise that never mentions measuring or installation, repeated phrasing across profiles, and the same names reviewing unrelated businesses in other cities or countries. Compare Google with HomeStars, BBB and Trustpilot, and read the one-star reviews and the company’s replies.</p></div>
+      </details>
+      <details>
+        <summary>Does a company with suspicious reviews sell bad windows?</summary>
+        <div class="faq-answer"><p>Not necessarily. Suspicious reviews say something about how a company is presented online, not about its product. A customer quoted by the Toronto Star said she was pleased with her windows even after learning the company had been linked to fake Google reviews. Check contracts, warranties and installation details separately.</p></div>
+      </details>
+      <details>
+        <summary>Are fake reviews illegal in Canada?</summary>
+        <div class="faq-answer"><p>The Competition Bureau has warned that fake reviews, including undisclosed reviews written by employees, can lead to penalties under the Competition Act. It fined the online travel agency FlightHub $5 million, and two of its directors $400,000, after the company published fake positive customer reviews.</p></div>
+      </details>
+      <details>
+        <summary>What do evidence levels A, B and C mean?</summary>
+        <div class="faq-answer"><p>Level A is a court decision or a regulator’s finding. Level B is a claim by an independent researcher that news media have reported, which the company disputes and no court or regulator has ruled on. Level C is a claim made by customers on review sites or forums that nobody independent has confirmed.</p></div>
+      </details>
+      <details>
+        <summary>What can I do if I am named here and disagree?</summary>
+        <div class="faq-answer"><p>Tell us. We will check the statement, correct errors promptly, and publish your response alongside your company’s file. Please include the page, the statement in question, and any documents that support your correction.</p></div>
+      </details>
+      <details>
+        <summary>Where can I report a suspected fake review?</summary>
+        <div class="faq-answer"><p>Report it to the platform that hosts it, such as Google, HomeStars, BBB or Trustpilot, using the report option next to the review. Keep screenshots and the date you saw it.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="method" aria-labelledby="method-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="method-h">How this review watch works</h2>
+      <p>We are a window company writing about other window companies, so the rules below matter more than usual.</p>
+    </div>
+    <div class="method">
+      <div>
+        <h3>Our rules</h3>
+        <ul>
+          <li><strong>No conflicts.</strong> We do not accept payment to add, remove or alter any company’s file.</li>
+          <li><strong>Sources first.</strong> Every claim links to the original report, court decision or review page, and carries a date.</li>
+          <li><strong>Attribution.</strong> We say who made each claim. We do not state as fact anything a source only alleges.</li>
+          <li><strong>Both sides.</strong> Each case file includes the company’s response and what has not been established.</li>
+          <li><strong>Customer voices.</strong> Reviews shown on this site are summaries in our own words of posts on third-party platforms. We remove names and identifying details, show praise and criticism, and note whether the company responded.</li>
+          <li><strong>No guessing.</strong> We do not speculate about who is behind a review or why, and we do not publish personal details of reviewers.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Limits</h3>
+        <ul>
+          <li>Review scores and counts change daily. Figures show what we saw on the date shown on each file.</li>
+          <li>Reports by researchers, customers and the press are not court or regulatory findings unless a file says so (Level A).</li>
+          <li>A company’s absence from this site means nothing. We have not reviewed the whole industry.</li>
+          <li>Some sources were not available to us in full. Where we rely on a summary, we say so.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
