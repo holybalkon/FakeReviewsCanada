@@ -1,4 +1,3 @@
-# Bought Reviews Calgary
 User-agent: *
 Allow: /
 
