@@ -1,4 +1,4 @@
-# Fake Reviews Canada
+# Bought Reviews Calgary
 User-agent: *
 Allow: /
 
