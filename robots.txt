@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fakereviewscanada.ca/sitemap.xml
+Sitemap: https://reviewscheckcalgary.org/sitemap.xml
